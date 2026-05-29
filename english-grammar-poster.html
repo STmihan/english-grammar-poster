@@ -236,6 +236,55 @@
   .foot .keys span{ display:inline-block; margin-right:14px;}
   .foot .keys b{ font-family:"JetBrains Mono",monospace; color:var(--ink);}
 
+  /* ---------- DARK THEME (screen only) ---------- */
+  html.dark {
+    --paper:#1E1B17;
+    --ink:#E8E2D6;
+    --ink-soft:#9E9789;
+    --line:#3A3530;
+    --card:#262320;
+
+    --terra:#D4795A;
+    --sage:#7AA388;
+    --mustard:#DAA840;
+    --blue:#6A9ABD;
+    --plum:#A86E94;
+    --rust:#C0665A;
+
+    --terra-bg:#2E2220;
+    --sage-bg:#1E2A22;
+    --mustard-bg:#2A2518;
+    --blue-bg:#1C2630;
+    --plum-bg:#2A1E28;
+    --rust-bg:#2E201E;
+  }
+  html.dark body { background:#141210; }
+  html.dark .sheet {
+    box-shadow:0 30px 80px rgba(0,0,0,.5);
+    background-image:radial-gradient(circle at 18% 12%, rgba(212,121,90,.06), transparent 60%),
+                     radial-gradient(circle at 85% 88%, rgba(106,154,189,.06), transparent 55%);
+  }
+  html.dark .col-head { background:var(--ink); color:var(--paper); }
+  html.dark .hl { background:var(--mustard-bg); }
+
+  /* theme toggle */
+  .theme-toggle {
+    background:none; border:1px solid var(--line); border-radius:6px;
+    cursor:pointer; padding:6px 8px; line-height:1;
+    color:var(--ink); display:flex; align-items:center;
+    transition: border-color .2s;
+  }
+  .theme-toggle:hover { border-color:var(--ink-soft); }
+  .theme-toggle .icon-sun { display:none; }
+  .theme-toggle .icon-moon { display:block; }
+  html.dark .theme-toggle .icon-sun { display:block; }
+  html.dark .theme-toggle .icon-moon { display:none; }
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: .35s;
+  }
+  @media print { .theme-toggle { display:none; } }
+
   /* ---------- MOBILE ---------- */
   @media (max-width: 800px) {
     body { padding: 8px; }
@@ -302,6 +351,7 @@
     <div>
       <h1>English <em>Cheat&nbsp;Sheet</em></h1>
     </div>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg><svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg></button>
   </div>
 
   <!-- TENSES -->
@@ -506,5 +556,27 @@
 
 
 </div>
+<script>
+function applyTheme(dark) {
+  document.documentElement.classList.toggle('dark', dark);
+}
+function toggleTheme() {
+  var dark = !document.documentElement.classList.contains('dark');
+  if (document.startViewTransition) {
+    document.startViewTransition(function() {
+      localStorage.setItem('theme', dark ? 'dark' : 'light');
+      applyTheme(dark);
+    });
+  } else {
+    localStorage.setItem('theme', dark ? 'dark' : 'light');
+    applyTheme(dark);
+  }
+}
+(function() {
+  var saved = localStorage.getItem('theme');
+  var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  applyTheme(saved ? saved === 'dark' : prefersDark);
+})();
+</script>
 </body>
 </html>
