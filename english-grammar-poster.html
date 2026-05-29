@@ -236,6 +236,56 @@
   .foot .keys span{ display:inline-block; margin-right:14px;}
   .foot .keys b{ font-family:"JetBrains Mono",monospace; color:var(--ink);}
 
+  /* ---------- MOBILE ---------- */
+  @media (max-width: 800px) {
+    body { padding: 8px; }
+    .sheet { width: 100%; padding: 16px 14px 20px; }
+    .head h1 { font-size: 32px; }
+
+    /* tense grid → vertical cards */
+    .tense-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .tense-grid .corner,
+    .tense-grid .col-head { display: none; }
+
+    .tense-grid .row-head {
+      flex-direction: row;
+      padding: 8px 12px;
+      font-size: 13px;
+      letter-spacing: .8px;
+    }
+
+    .tense-grid .tcell {
+      padding: 10px 12px;
+      position: relative;
+    }
+    .tense-grid .tcell::before {
+      content: attr(data-aspect);
+      display: block;
+      font-family: "Fraunces", serif;
+      font-weight: 700;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: .6px;
+      color: var(--ink-soft);
+      margin-bottom: 4px;
+    }
+
+    /* legend */
+    .legend { flex-direction: column; gap: 12px; }
+    .legend-freq { padding-left: 0; text-align: left; white-space: normal; }
+
+    /* columns → single column */
+    .columns { flex-direction: column; }
+    .col { width: 100%; }
+
+    /* tables scroll if needed */
+    .card { overflow-x: auto; }
+  }
+
   /* ---------- PRINT ---------- */
   @page{ size:A2 portrait; margin:0; }
   @media print{
@@ -266,24 +316,24 @@
 
       <!-- PRESENT -->
       <div class="row-head rh-present">Present</div>
-      <div class="tcell"><code class="frm">V / V-s</code><span class="smp">I work · He works</span><span class="tru">Я работаю (обычно, всегда)</span><span class="fq fq-often"></span></div>
-      <div class="tcell"><code class="frm">am/is/are + V-ing</code><span class="smp">I am working</span><span class="tru">Я работаю (сейчас)</span><span class="fq fq-often"></span></div>
-      <div class="tcell"><code class="frm">have/has + V3</code><span class="smp">I have worked</span><span class="tru">Я уже поработал (есть результат)</span><span class="fq fq-often"></span></div>
-      <div class="tcell"><code class="frm">have/has been + V-ing</code><span class="smp">I have been working</span><span class="tru">Работаю уже некоторое время</span><span class="fq fq-some"></span></div>
+      <div class="tcell" data-aspect="Simple"><code class="frm">V / V-s</code><span class="smp">I work · He works</span><span class="tru">Я работаю (обычно, всегда)</span><span class="fq fq-often"></span></div>
+      <div class="tcell" data-aspect="Continuous"><code class="frm">am/is/are + V-ing</code><span class="smp">I am working</span><span class="tru">Я работаю (сейчас)</span><span class="fq fq-often"></span></div>
+      <div class="tcell" data-aspect="Perfect"><code class="frm">have/has + V3</code><span class="smp">I have worked</span><span class="tru">Я уже поработал (есть результат)</span><span class="fq fq-often"></span></div>
+      <div class="tcell" data-aspect="Perfect Cont."><code class="frm">have/has been + V-ing</code><span class="smp">I have been working</span><span class="tru">Работаю уже некоторое время</span><span class="fq fq-some"></span></div>
 
       <!-- PAST -->
       <div class="row-head rh-past">Past</div>
-      <div class="tcell"><code class="frm">V2 (V-ed)</code><span class="smp">I worked</span><span class="tru">Я работал (тогда)</span><span class="fq fq-often"></span></div>
-      <div class="tcell"><code class="frm">was/were + V-ing</code><span class="smp">I was working</span><span class="tru">Я работал (в тот момент)</span><span class="fq fq-often"></span></div>
-      <div class="tcell"><code class="frm">had + V3</code><span class="smp">I had worked</span><span class="tru">Я поработал (до того момента)</span><span class="fq fq-some"></span></div>
-      <div class="tcell"><code class="frm">had been + V-ing</code><span class="smp">I had been working</span><span class="tru">Работал какое-то время до того</span><span class="fq fq-rare"></span></div>
+      <div class="tcell" data-aspect="Simple"><code class="frm">V2 (V-ed)</code><span class="smp">I worked</span><span class="tru">Я работал (тогда)</span><span class="fq fq-often"></span></div>
+      <div class="tcell" data-aspect="Continuous"><code class="frm">was/were + V-ing</code><span class="smp">I was working</span><span class="tru">Я работал (в тот момент)</span><span class="fq fq-often"></span></div>
+      <div class="tcell" data-aspect="Perfect"><code class="frm">had + V3</code><span class="smp">I had worked</span><span class="tru">Я поработал (до того момента)</span><span class="fq fq-some"></span></div>
+      <div class="tcell" data-aspect="Perfect Cont."><code class="frm">had been + V-ing</code><span class="smp">I had been working</span><span class="tru">Работал какое-то время до того</span><span class="fq fq-rare"></span></div>
 
       <!-- FUTURE -->
       <div class="row-head rh-future">Future</div>
-      <div class="tcell"><code class="frm">will + V</code><span class="smp">I will work</span><span class="tru">Я буду работать</span><span class="fq fq-often"></span></div>
-      <div class="tcell"><code class="frm">will be + V-ing</code><span class="smp">I will be working</span><span class="tru">Буду работать (в тот момент)</span><span class="fq fq-some"></span></div>
-      <div class="tcell"><code class="frm">will have + V3</code><span class="smp">I will have worked</span><span class="tru">Закончу (к тому моменту)</span><span class="fq fq-rare"></span></div>
-      <div class="tcell"><code class="frm">will have been + V-ing</code><span class="smp">…been working</span><span class="tru">Буду работать уже некоторое время</span><span class="fq fq-rare"></span></div>
+      <div class="tcell" data-aspect="Simple"><code class="frm">will + V</code><span class="smp">I will work</span><span class="tru">Я буду работать</span><span class="fq fq-often"></span></div>
+      <div class="tcell" data-aspect="Continuous"><code class="frm">will be + V-ing</code><span class="smp">I will be working</span><span class="tru">Буду работать (в тот момент)</span><span class="fq fq-some"></span></div>
+      <div class="tcell" data-aspect="Perfect"><code class="frm">will have + V3</code><span class="smp">I will have worked</span><span class="tru">Закончу (к тому моменту)</span><span class="fq fq-rare"></span></div>
+      <div class="tcell" data-aspect="Perfect Cont."><code class="frm">will have been + V-ing</code><span class="smp">…been working</span><span class="tru">Буду работать уже некоторое время</span><span class="fq fq-rare"></span></div>
     </div>
     <div class="legend">
       <div class="legend-aspects">
