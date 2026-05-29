@@ -2,6 +2,8 @@
 
 HTML cheat sheet for English grammar, convertible to A2 PDF.
 
+**Live:** https://stmihan.github.io/english-grammar-poster/
+
 ## Setup
 
 ```bash
