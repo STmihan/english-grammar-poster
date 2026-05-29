@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English Cheat Sheet</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBF6EC;
+    --ink:#2A2520;
+    --ink-soft:#8A8073;
+    --line:#E3D9C7;
+    --card:#FFFDF8;
+
+    --terra:#C2603C;
+    --sage:#5C8466;
+    --mustard:#C99327;
+    --blue:#4F7796;
+    --plum:#8A5274;
+    --rust:#A24A3A;
+
+    --terra-bg:#F6E7DF;
+    --sage-bg:#E4EDE5;
+    --mustard-bg:#F6ECD6;
+    --blue-bg:#E0E9EF;
+    --plum-bg:#EFE2EA;
+    --rust-bg:#F3E1DC;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+
+  html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+
+  body{
+    background:#EDE6D8;
+    font-family:"Hanken Grotesk",sans-serif;
+    color:var(--ink);
+    line-height:1.35;
+    padding:24px;
+    display:flex;
+    justify-content:center;
+  }
+
+  .sheet{
+    width:1240px;
+    background:var(--paper);
+    padding:38px 40px 44px;
+    box-shadow:0 30px 80px rgba(60,45,25,.22);
+    background-image:radial-gradient(circle at 18% 12%, rgba(194,96,60,.05), transparent 60%),
+                     radial-gradient(circle at 85% 88%, rgba(79,119,150,.05), transparent 55%);
+  }
+
+  /* ---------- HEADER ---------- */
+  .head{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    border-bottom:3px solid var(--ink);
+    padding-bottom:14px;
+    margin-bottom:22px;
+  }
+  .head h1{
+    font-family:"Fraunces",serif;
+    font-weight:600;
+    font-size:54px;
+    line-height:.95;
+    letter-spacing:-.5px;
+  }
+  .head h1 em{ font-style:italic; color:var(--terra); }
+  .head .sub{
+    font-size:14px;
+    color:var(--ink-soft);
+    margin-top:8px;
+    letter-spacing:.3px;
+  }
+
+  /* ---------- CARD BASICS ---------- */
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:14px 16px 16px;
+    break-inside:avoid;
+  }
+  .card-title{
+    font-family:"Fraunces",serif;
+    font-weight:600;
+    font-size:16px;
+    display:flex;
+    align-items:center;
+    gap:9px;
+    margin-bottom:11px;
+    letter-spacing:-.2px;
+  }
+  .card-title .ru{ font-family:"Hanken Grotesk"; font-weight:500; font-size:12px; color:var(--ink-soft); letter-spacing:.2px;}
+  .tab{
+    width:11px;height:22px;border-radius:3px;flex:none;
+  }
+  .tc-red{background:#B14A45}
+  .tc-terra{background:#C06A38}
+  .tc-amber{background:#B68A2E}
+  .tc-olive{background:#8E9A3C}
+  .tc-green{background:#5E9457}
+  .tc-tealgreen{background:#3F9075}
+  .tc-teal{background:#3D8E96}
+  .tc-blue{background:#2F72BE}
+  .tc-indigo{background:#5A66AC}
+  .tc-violet{background:#8159A8}
+  .tc-magenta{background:#9E4F92}
+  .tc-rose{background:#B14E72}
+  .tc-yellow{background:#E5BB3C}
+
+  code,.mono{ font-family:"JetBrains Mono",monospace; font-weight:500; }
+  .ex{ color:var(--terra); font-style:italic; font-family:"Fraunces",serif; }
+  .hl{ background:var(--mustard-bg); padding:0 3px; border-radius:3px; font-weight:600;}
+
+  /* ---------- TENSES BLOCK ---------- */
+  .tenses{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:16px 18px 18px;
+    margin-bottom:18px;
+  }
+  .tense-grid{
+    display:grid;
+    grid-template-columns:84px repeat(4,1fr);
+    gap:8px;
+    margin-top:4px;
+    align-items:stretch;
+  }
+  .corner{}
+  .col-head{
+    text-align:center;
+    font-family:"Fraunces",serif;
+    font-weight:700;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:.8px;
+    padding:6px 4px;
+    border-radius:6px;
+    color:#fff;
+    background:var(--ink);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .row-head{
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;
+    font-family:"Fraunces",serif;
+    font-weight:700;
+    font-size:14px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    border-radius:6px;
+    color:#fff;
+    padding:4px;
+  }
+  .rh-present{background:var(--sage)} .rh-past{background:var(--blue)} .rh-future{background:var(--plum)}
+  .tcell{
+    border:1px solid var(--line);
+    border-radius:7px;
+    padding:8px 10px;
+    background:var(--paper);
+    position:relative;
+  }
+  .tcell .frm{ font-family:"JetBrains Mono",monospace; font-size:12px; font-weight:500; color:var(--ink-soft); margin:0 0 3px; display:block;}
+  .tcell .smp{ font-family:"Fraunces",serif; font-style:italic; font-size:12px; color:var(--terra);}
+  .tcell .tru{ display:block; font-size:12px; color:var(--ink-soft); margin-top:3px; line-height:1.3; padding-right:12px;}
+  .fq{ position:absolute; right:7px; bottom:7px; width:9px; height:9px; border-radius:2px; }
+  .fq-often{ background:var(--sage); }
+  .fq-some{ background:var(--mustard); }
+  .fq-rare{ background:transparent; border:1.6px solid var(--ink-soft); }
+  .fq-inline{ position:static; display:inline-block; vertical-align:middle; margin:0 3px 2px; }
+  .legend{ display:flex; justify-content:space-between; font-size:12px; color:var(--ink-soft); margin-top:11px; line-height:1.7;}
+  .legend b{color:var(--ink); font-weight:600;}
+  .legend-aspects{ flex:1; }
+  .legend-freq{ flex:none; padding-left:22px; text-align:right; white-space:nowrap; }
+
+  /* ---------- FIXED COLUMNS ---------- */
+  .columns{ display:flex; gap:16px; align-items:flex-start; }
+  .col{ flex:1; min-width:0; display:flex; flex-direction:column; gap:16px; }
+
+  table.g{ width:100%; border-collapse:collapse; font-size:12px;}
+  table.g td,table.g th{ padding:3px 6px; text-align:left; vertical-align:top;}
+  table.g thead th{ font-size:12px; text-transform:uppercase; letter-spacing:.6px; color:var(--ink-soft); border-bottom:1.5px solid var(--line); font-weight:700;}
+  table.g tbody tr+tr td{ border-top:1px solid var(--line);}
+  table.g .k{ font-family:"JetBrains Mono",monospace; font-weight:700; font-size:12px;}
+
+  .row{ display:flex; gap:8px; align-items:baseline; padding:3.5px 0; font-size:12px;}
+  .row+.row{ border-top:1px solid var(--line);}
+  .row .lead{ font-family:"JetBrains Mono",monospace; font-weight:700; color:var(--ink); flex:none; min-width:fit-content;}
+  .row .desc{ color:var(--ink-soft); font-size:12px;}
+
+  /* ---------- ARTICLES (minimal) ---------- */
+  .art{ display:grid; grid-template-columns:auto 1fr; column-gap:14px; align-items:baseline; }
+  .art .k{ font-family:"JetBrains Mono",monospace; font-weight:700; font-size:14px; color:var(--ink); padding:10px 0; white-space:nowrap;}
+  .art .b{ padding:10px 0; }
+  .art .body-rule{ font-size:12px; color:var(--ink-soft); display:block; }
+  .art .body-ex{ font-family:"Fraunces",serif; font-style:italic; font-size:12px; color:var(--terra); display:block; margin-top:3px;}
+  .art .divline{ grid-column:1 / -1; height:1px; background:var(--line); }
+  .art .art-note{ grid-column:1 / -1; padding:10px 0; }
+
+  .formula{
+    font-family:"JetBrains Mono",monospace;
+    font-size:12px; font-weight:500;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:7px 9px;
+    margin:4px 0;
+    line-height:1.5;
+  }
+  .formula .plus,.formula .minus,.formula .q{
+    font-family:"Hanken Grotesk";
+    font-size:12px; font-weight:700;
+    text-transform:uppercase; letter-spacing:.5px;
+    display:inline-block; margin-bottom:2px;
+  }
+  .formula .plus{color:var(--ink-soft)}
+  .formula .minus{color:var(--ink-soft)}
+  .formula .q{color:var(--ink-soft)}
+
+  .tip{
+    font-size:12px; color:var(--ink-soft); margin-top:8px; padding-left:10px;
+    border-left:3px solid var(--mustard); line-height:1.45;
+  }
+
+  .foot{
+    margin-top:8px; padding-top:14px; border-top:1px solid var(--line);
+    display:flex; justify-content:space-between; align-items:center;
+    font-size:12px; color:var(--ink-soft);
+  }
+  .foot .keys span{ display:inline-block; margin-right:14px;}
+  .foot .keys b{ font-family:"JetBrains Mono",monospace; color:var(--ink);}
+
+  /* ---------- PRINT ---------- */
+  @page{ size:A2 portrait; margin:0; }
+  @media print{
+    body{ background:#f5f2e9; padding:24px 96px; }
+    .sheet{ box-shadow:none; width:100%; padding:0; }
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <!-- HEADER -->
+  <div class="head">
+    <div>
+      <h1>English <em>Cheat&nbsp;Sheet</em></h1>
+    </div>
+  </div>
+
+  <!-- TENSES -->
+  <div class="tenses">
+    <div class="card-title"><span class="tab tc-yellow"></span>The 12 Tenses <span class="ru">Времена</span></div>
+    <div class="tense-grid">
+      <div class="corner"></div>
+      <div class="col-head">Simple</div>
+      <div class="col-head">Continuous</div>
+      <div class="col-head">Perfect</div>
+      <div class="col-head">Perfect Cont.</div>
+
+      <!-- PRESENT -->
+      <div class="row-head rh-present">Present</div>
+      <div class="tcell"><code class="frm">V / V-s</code><span class="smp">I work · He works</span><span class="tru">Я работаю (обычно, всегда)</span><span class="fq fq-often"></span></div>
+      <div class="tcell"><code class="frm">am/is/are + V-ing</code><span class="smp">I am working</span><span class="tru">Я работаю (сейчас)</span><span class="fq fq-often"></span></div>
+      <div class="tcell"><code class="frm">have/has + V3</code><span class="smp">I have worked</span><span class="tru">Я уже поработал (есть результат)</span><span class="fq fq-often"></span></div>
+      <div class="tcell"><code class="frm">have/has been + V-ing</code><span class="smp">I have been working</span><span class="tru">Работаю уже некоторое время</span><span class="fq fq-some"></span></div>
+
+      <!-- PAST -->
+      <div class="row-head rh-past">Past</div>
+      <div class="tcell"><code class="frm">V2 (V-ed)</code><span class="smp">I worked</span><span class="tru">Я работал (тогда)</span><span class="fq fq-often"></span></div>
+      <div class="tcell"><code class="frm">was/were + V-ing</code><span class="smp">I was working</span><span class="tru">Я работал (в тот момент)</span><span class="fq fq-often"></span></div>
+      <div class="tcell"><code class="frm">had + V3</code><span class="smp">I had worked</span><span class="tru">Я поработал (до того момента)</span><span class="fq fq-some"></span></div>
+      <div class="tcell"><code class="frm">had been + V-ing</code><span class="smp">I had been working</span><span class="tru">Работал какое-то время до того</span><span class="fq fq-rare"></span></div>
+
+      <!-- FUTURE -->
+      <div class="row-head rh-future">Future</div>
+      <div class="tcell"><code class="frm">will + V</code><span class="smp">I will work</span><span class="tru">Я буду работать</span><span class="fq fq-often"></span></div>
+      <div class="tcell"><code class="frm">will be + V-ing</code><span class="smp">I will be working</span><span class="tru">Буду работать (в тот момент)</span><span class="fq fq-some"></span></div>
+      <div class="tcell"><code class="frm">will have + V3</code><span class="smp">I will have worked</span><span class="tru">Закончу (к тому моменту)</span><span class="fq fq-rare"></span></div>
+      <div class="tcell"><code class="frm">will have been + V-ing</code><span class="smp">…been working</span><span class="tru">Буду работать уже некоторое время</span><span class="fq fq-rare"></span></div>
+    </div>
+    <div class="legend">
+      <div class="legend-aspects">
+        <b>Simple</b>   факт, привычка, расписание<br>
+        <b>Continuous</b>   процесс прямо сейчас / в момент<br>
+        <b>Perfect</b>   результат к моменту («уже сделал»)<br>
+        <b>Perfect Continuous</b>   длительность до момента («делаю уже 2 часа»)
+      </div>
+      <div class="legend-freq">
+        Квадратик в углу ячейки - как часто время встречается в речи:<br>
+        <span class="fq fq-often fq-inline"></span> <b>часто</b><br>
+        <span class="fq fq-some fq-inline"></span> <b>иногда</b><br>
+        <span class="fq fq-rare fq-inline"></span> <b>редко</b>
+      </div>
+    </div>
+  </div>
+
+  <!-- MASONRY -->
+  <div class="columns">
+    <div class="col">
+    <div class="card">
+      <div class="card-title"><span class="tab tc-red"></span>Sentence Order <span class="ru">Порядок слов</span></div>
+      <div class="formula"><span class="plus">Утверждение</span><br>Subject + Verb + Object<br><span class="ex">I&nbsp;&nbsp;like&nbsp;&nbsp;coffee.</span></div>
+      <div class="formula"><span class="minus">Отрицание</span><br>Subj + don't/doesn't + V<br><span class="ex">I don't like coffee.</span></div>
+      <div class="formula"><span class="q">Вопрос</span><br>(Wh) + do/does + Subj + V<br><span class="ex">Do you like coffee?</span><br><span class="ex">Where do you live?</span></div>
+      <div class="formula"><span class="q">Вопрос с be / модальным</span><br>меняем местами, без do<br><span class="ex">Are you happy? · Can you swim?</span></div>
+      <div class="tip"><b>Место <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-0.2em;display:inline-block"><path d="M13.207 19.793a.707.707 0 0 1-1.207-.5V16a1 1 0 0 0-1-1H5a1 1 0 0 1-1-1v-4a1 1 0 0 1 1-1h6a1 1 0 0 0 1-1V4.707a.707.707 0 0 1 1.207-.5l6.94 6.94a1.207 1.207 0 0 1 0 1.707z"/></svg> потом время:</b> <span class="ex">I read <span class="hl">at home in the evening</span>.</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="tab tc-teal"></span>do / does / did <span class="ru">Помощники</span></div>
+      <div class="row"><span class="lead">do</span><span class="desc">I / you / we / they</span></div>
+      <div class="row"><span class="lead">does</span><span class="desc">he / she / it</span></div>
+      <div class="row"><span class="lead">did</span><span class="desc">любое лицо, прошедшее</span></div>
+      <div class="tip">После does/did глагол в <b>базовой форме</b>: <span class="ex">Does she <u>work</u>? Did you <u>go</u>?</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="tab tc-olive"></span>to be <span class="ru">быть / есть</span></div>
+      <table class="g">
+        <thead><tr><th></th><th>Present</th><th>Past</th><th>Future</th></tr></thead>
+        <tbody>
+          <tr><td class="k">I</td><td>am</td><td>was</td><td>will be</td></tr>
+          <tr><td class="k">you</td><td>are</td><td>were</td><td>will be</td></tr>
+          <tr><td class="k">he/she/it</td><td>is</td><td>was</td><td>will be</td></tr>
+          <tr><td class="k">we</td><td>are</td><td>were</td><td>will be</td></tr>
+          <tr><td class="k">they</td><td>are</td><td>were</td><td>will be</td></tr>
+        </tbody>
+      </table>
+      <div class="tip">Сокращения: <span class="ex">I'm, you're, he's · isn't, wasn't</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="tab tc-violet"></span>Wh- Questions <span class="ru">Вопросительные слова</span></div>
+      <table class="g">
+        <tbody>
+          <tr><td class="k">What</td><td>что</td></tr>
+          <tr><td class="k">Where</td><td>где / куда</td></tr>
+          <tr><td class="k">When</td><td>когда</td></tr>
+          <tr><td class="k">Who</td><td>кто</td></tr>
+          <tr><td class="k">Whose</td><td>чей</td></tr>
+          <tr><td class="k">Why</td><td>почему</td></tr>
+          <tr><td class="k">How</td><td>как</td></tr>
+          <tr><td class="k">Which</td><td>который</td></tr>
+          <tr><td class="k">How much</td><td>сколько (неисч.)</td></tr>
+          <tr><td class="k">How many</td><td>сколько (исч.)</td></tr>
+          <tr><td class="k">How long</td><td>как долго</td></tr>
+          <tr><td class="k">How often</td><td>как часто</td></tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+    <div class="col">
+    <div class="card">
+      <div class="card-title"><span class="tab tc-indigo"></span>Modal Verbs <span class="ru">Модальные</span></div>
+      <div class="row"><span class="lead">can</span><span class="desc">умею / могу</span></div>
+      <div class="row"><span class="lead">could</span><span class="desc">мог / вежл. просьба</span></div>
+      <div class="row"><span class="lead">may</span><span class="desc">можно (разрешение)</span></div>
+      <div class="row"><span class="lead">might</span><span class="desc">может быть (вероятно)</span></div>
+      <div class="row"><span class="lead">must</span><span class="desc">должен (строго)</span></div>
+      <div class="row"><span class="lead">have to</span><span class="desc">приходится (надо)</span></div>
+      <div class="row"><span class="lead">should</span><span class="desc">следует (совет)</span></div>
+      <div class="row"><span class="lead">will</span><span class="desc">буду / обещаю</span></div>
+      <div class="row"><span class="lead">would</span><span class="desc">бы (вежливость)</span></div>
+      <div class="tip">После модального глагол без <b>to</b> и без <b>-s</b>: <span class="ex">She can <u>swim</u>.</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="tab tc-amber"></span>Articles <span class="ru">Артикли (в рус. нет!)</span></div>
+      <div class="art">
+        <span class="k">a / an</span>
+        <span class="b"><span class="body-rule">исчисляемое, ед.ч., впервые</span><span class="body-ex">a cat · an apple</span></span>
+        <span class="divline"></span>
+        <span class="k">the</span>
+        <span class="b"><span class="body-rule">конкретный, уже известный</span><span class="body-ex">the sun · the book</span></span>
+        <span class="divline"></span>
+        <span class="art-note"><span class="body-rule">Артикль не нужен с множественным числом в общем смысле, неисчисляемыми и именами собственными.</span><span class="body-ex">water · cats · London</span></span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="tab tc-rose"></span>there is / are <span class="ru">Есть / находится</span></div>
+      <div class="row"><span class="lead">There is</span><span class="desc">ед.ч. / неисчисл. <span class="ex">There is a book.</span></span></div>
+      <div class="row"><span class="lead">There are</span><span class="desc">мн.ч. <span class="ex">There are books.</span></span></div>
+      <div class="formula"><span class="q">Вопрос</span><br>Is there…? / Are there…?<br><span class="minus" style="margin-top:6px">Отрицание</span><br>There isn't / There aren't</div>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="tab tc-tealgreen"></span>some · any · much · many <span class="ru">Количество</span></div>
+      <div class="row"><span class="lead">some</span><span class="desc">в утверждениях <span class="ex">I have some water.</span></span></div>
+      <div class="row"><span class="lead">any</span><span class="desc">в вопросах и отрицаниях <span class="ex">Do you have any? I don't have any.</span></span></div>
+      <div class="row"><span class="lead">much</span><span class="desc">неисчисл. <span class="ex">much money</span></span></div>
+      <div class="row"><span class="lead">many</span><span class="desc">исчисл. мн.ч. <span class="ex">many books</span></span></div>
+      <div class="row"><span class="lead">a lot of</span><span class="desc">и то, и другое</span></div>
+    </div>
+    </div>
+    <div class="col">
+    <div class="card">
+      <div class="card-title"><span class="tab tc-green"></span>Pronouns <span class="ru">Местоимения</span></div>
+      <table class="g">
+        <thead><tr><th>Subj</th><th>Obj</th><th>my</th><th>mine</th><th>-self</th></tr></thead>
+        <tbody>
+          <tr><td class="k">I</td><td>me</td><td>my</td><td>mine</td><td>myself</td></tr>
+          <tr><td class="k">you</td><td>you</td><td>your</td><td>yours</td><td>yourself</td></tr>
+          <tr><td class="k">he</td><td>him</td><td>his</td><td>his</td><td>himself</td></tr>
+          <tr><td class="k">she</td><td>her</td><td>her</td><td>hers</td><td>herself</td></tr>
+          <tr><td class="k">it</td><td>it</td><td>its</td><td>its</td><td>itself</td></tr>
+          <tr><td class="k">we</td><td>us</td><td>our</td><td>ours</td><td>ourselves</td></tr>
+          <tr><td class="k">they</td><td>them</td><td>their</td><td>theirs</td><td>themselves</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="tab tc-magenta"></span>Irregular Verbs <span class="ru">Неправильные (V1·V2·V3)</span></div>
+      <table class="g">
+        <thead><tr><th>base</th><th>past</th><th>V3</th></tr></thead>
+        <tbody>
+          <tr><td class="k">be</td><td>was/were</td><td>been</td></tr>
+          <tr><td class="k">have</td><td>had</td><td>had</td></tr>
+          <tr><td class="k">do</td><td>did</td><td>done</td></tr>
+          <tr><td class="k">go</td><td>went</td><td>gone</td></tr>
+          <tr><td class="k">make</td><td>made</td><td>made</td></tr>
+          <tr><td class="k">take</td><td>took</td><td>taken</td></tr>
+          <tr><td class="k">see</td><td>saw</td><td>seen</td></tr>
+          <tr><td class="k">get</td><td>got</td><td>got</td></tr>
+          <tr><td class="k">know</td><td>knew</td><td>known</td></tr>
+          <tr><td class="k">say</td><td>said</td><td>said</td></tr>
+          <tr><td class="k">think</td><td>thought</td><td>thought</td></tr>
+          <tr><td class="k">buy</td><td>bought</td><td>bought</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="tab tc-blue"></span>at · on · in <span class="ru">Предлоги</span></div>
+      <p style="font-size:12px;font-weight:700;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.6px;margin-bottom:4px">Time · Время</p>
+      <div class="row"><span class="lead">at</span><span class="desc">точное время <span class="ex">at 5, at night</span></span></div>
+      <div class="row"><span class="lead">on</span><span class="desc">дни/даты <span class="ex">on Monday, on May 5</span></span></div>
+      <div class="row"><span class="lead">in</span><span class="desc">месяц/год/часть дня <span class="ex">in May, in 2024, in the morning</span></span></div>
+      <p style="font-size:12px;font-weight:700;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.6px;margin:9px 0 4px">Place · Место</p>
+      <div class="row"><span class="lead">at</span><span class="desc">точка <span class="ex">at home, at the door</span></span></div>
+      <div class="row"><span class="lead">on</span><span class="desc">поверхность <span class="ex">on the table</span></span></div>
+      <div class="row"><span class="lead">in</span><span class="desc">внутри <span class="ex">in the box, in London</span></span></div>
+    </div>
+    <div class="card">
+      <div class="card-title"><span class="tab tc-terra"></span>have / has / had <span class="ru">Иметь / помощник</span></div>
+      <p style="font-size:12px;font-weight:700;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.6px;margin-bottom:4px">По лицам</p>
+      <div class="row"><span class="lead">have</span><span class="desc">I / you / we / they</span></div>
+      <div class="row"><span class="lead">has</span><span class="desc">he / she / it</span></div>
+      <div class="row"><span class="lead">had</span><span class="desc">прошедшее, все лица</span></div>
+      <p style="font-size:12px;font-weight:700;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.6px;margin:9px 0 4px">Две роли</p>
+      <div class="row"><span class="lead">иметь</span><span class="desc"><span class="ex">I have a dog</span> у меня есть собака</span></div>
+      <div class="row"><span class="lead">Perfect</span><span class="desc">помощник: <span class="ex">I have done, I had done</span></span></div>
+    </div>
+    </div>
+  </div>
+
+
+</div>
+</body>
+</html>
